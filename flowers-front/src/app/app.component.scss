@@ -1,0 +1,54 @@
+@use '@angular/material' as mat;
+
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+
+.custom-toolbar {
+  background-color: #004f4f;
+}
+
+
+.github-logo {
+  margin-bottom: -6px;
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+
+.app-logo {
+  margin-left: 16px;
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+.main-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 75%;
+  max-width: 1080px;
+  margin: auto;
+}
+
+.active-link {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.custom-toolbar > * {
+  color: white;
+}
+
+.custom-toolbar > button {
+  margin: 0 8px;
+}

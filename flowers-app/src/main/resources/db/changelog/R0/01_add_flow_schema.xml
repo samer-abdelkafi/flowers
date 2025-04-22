@@ -1,0 +1,151 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+    <changeSet author="abdelkaf (generated)" id="20240627-01">
+
+        <createTable tableName="F_FLOW">
+            <column name="ID" autoIncrement="true" startWith="10000" type="int">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_FLOW"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="FORMAT" type="VARCHAR(25)"/>
+            <column name="ATTRIBUTES" type="text"/>
+            <column name="FILTER_TYPE" type="VARCHAR(250)"/>
+            <column name="ACTIVE" type="boolean" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+
+        <createTable tableName="F_DESTINATION">
+            <column name="ID" autoIncrement="true" startWith="10000" type="int">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_DESTINATION"/>
+            </column>
+            <column name="TYPE" type="VARCHAR(10)"/>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+        </createTable>
+
+        <createTable tableName="F_FLOW_DESTINATION_FILE">
+            <column name="ID" type="int">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_FLOW_DESTINATION_FILE"/>
+            </column>
+            <column name="DIRECTORY" type="VARCHAR(255)"/>
+            <column name="CONFIG_NAME" type="VARCHAR(25)"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="F_FLOW_DESTINATION_FILE"
+                                 baseColumnNames="ID"
+                                 constraintName="FK_DEST_FILE_TO_DEST"
+                                 referencedTableName="F_DESTINATION"
+                                 referencedColumnNames="ID" />
+
+        <createTable tableName="F_FLOW_DESTINATION_JMS">
+            <column name="ID" type="int">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_FLOW_DESTINATION_JMS"/>
+            </column>
+            <column name="QUEUE_NAME" type="VARCHAR(255)"/>
+            <column name="CONFIG_NAME" type="VARCHAR(25)"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="F_FLOW_DESTINATION_JMS"
+                                 baseColumnNames="ID"
+                                 constraintName="FK_DEST_JMS_TO_DEST"
+                                 referencedTableName="F_DESTINATION"
+                                 referencedColumnNames="ID" />
+
+        <createTable tableName="F_FLOW_ERROR">
+            <column name="FLOW_ID" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEST_ID" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="JMS_ID" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ERROR_DATE" type="datetime"/>
+            <column name="OK_DATE" type="datetime"/>
+            <column name="FILE" type="VARCHAR(255)"/>
+            <column name="IS_BYTES" type="boolean" defaultValue="false"/>
+            <column name="STATUS" type="VARCHAR(15)"/>
+            <column name="SERVER" type="char(5)"/>
+        </createTable>
+
+
+        <createTable tableName="F_FLOW_PUBLISHER">
+            <column name="FLOW_ID" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="FLOW_PUBLISHER"
+                             referencedTableName="F_FLOW"
+                             referencedColumnNames="ID"/>>
+            </column>
+            <column name="DEST_ID" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="FK_FLOW_PUBLISHER_DEST"
+                             referencedTableName="F_DESTINATION"
+                             referencedColumnNames="ID"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey constraintName="PK_FLOW_PUBLISHERS"
+                       tableName="F_FLOW_PUBLISHER"
+                       columnNames="FLOW_ID,DEST_ID"/>
+
+        <createTable tableName="F_FLOW_SUBSCRIBER">
+            <column name="FLOW_ID" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="FK_FLOW_SUBSCRIBER_FLOW"
+                             referencedTableName="F_FLOW"
+                             referencedColumnNames="ID"/>>
+            </column>
+            <column name="DEST_ID" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="FK_FLOW_SUBSCRIBER_DEST"
+                             referencedTableName="F_DESTINATION"
+                             referencedColumnNames="ID"/>
+            </column>
+            <column name="CONDITION" type="text"/>
+        </createTable>
+
+        <addPrimaryKey constraintName="PK_FLOW_SUBSCRIBER"
+                       tableName="F_FLOW_SUBSCRIBER"
+                       columnNames="FLOW_ID,DEST_ID"/>
+
+
+
+
+        <createTable tableName="FLOW_AUDIT">
+            <column name="ID" autoIncrement="true" startWith="10000" type="int">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_FLOW_AUDIT"/>
+            </column>
+            <column name="FLOW_ID" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEST_ID" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PUB_ID" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INPUT_DATE" type="datetime"/>
+            <column name="UPDATE_STATUS_DATE" type="datetime"/>
+            <column name="PATH" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+
+</databaseChangeLog>
