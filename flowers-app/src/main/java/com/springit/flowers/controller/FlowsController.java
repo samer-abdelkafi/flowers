@@ -20,6 +20,12 @@ public class FlowsController {
         return flowRepoService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public Flow getById(@PathVariable("id") Integer id) {
+        return flowRepoService.findById(id);
+    }
+
+
     @PostMapping()
     public Flow save(@RequestBody Flow flow) {
         return flowRepoService.save(flow);

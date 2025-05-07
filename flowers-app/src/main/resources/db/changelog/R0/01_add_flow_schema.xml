@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
 
-    <changeSet author="abdelkaf (generated)" id="20240627-01">
+    <changeSet author="abdelkaf (generated)" id="20250427-01">
 
         <createTable tableName="F_FLOW">
             <column name="ID" autoIncrement="true" startWith="10000" type="int">
@@ -145,6 +145,10 @@
             </column>
         </createTable>
 
+    </changeSet>
+
+    <changeSet id="20250528-1" author="abdelkaf">
+        <sqlFile path="data/init-flow-data.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
 

@@ -47,12 +47,6 @@ public class Flow implements Serializable {
     @Column(name = "FILTER_TYPE")
     private String filterTypesStringFormat;
 
-//    @ElementCollection
-//    @CollectionTable(name = "FLOW_SERVER",
-//                    joinColumns = @JoinColumn(name = "FLOW_ID"))
-//    @Column(name = "SERVER")
-//    private Set<String> servers;
-
     @Column(name = "ACTIVE")
     private boolean active;
 

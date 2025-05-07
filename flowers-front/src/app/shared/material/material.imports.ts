@@ -15,6 +15,13 @@ import {
   MatRow
 } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
+import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatOption} from '@angular/material/core';
+import {MatCheckbox} from '@angular/material/checkbox';
+import { MatSelect } from '@angular/material/select';
+import {MatInput} from '@angular/material/input';
+
+
 
 export const MATERIAL_IMPORTS = [
   MatButtonModule,
@@ -31,5 +38,12 @@ export const MATERIAL_IMPORTS = [
   MatRowDef,
   MatHeaderRow,
   MatRow,
-  MatPaginator
+  MatPaginator,
+  MatLabel,
+  MatOption,
+  MatFormField,
+  MatSelect,
+  MatCheckbox,
+  MatInput,
+  MatError
 ];

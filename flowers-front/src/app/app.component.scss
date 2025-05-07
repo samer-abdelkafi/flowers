@@ -13,9 +13,12 @@ mat-toolbar {
 
 .custom-toolbar {
   background-color: #004f4f;
+  padding: 0 64px;
 }
 
-
+.app-title {
+  margin-left: 16px;
+}
 .github-logo {
   margin-bottom: -6px;
   margin-right: 8px;
@@ -23,13 +26,6 @@ mat-toolbar {
   height: 24px;
 }
 
-
-.app-logo {
-  margin-left: 16px;
-  margin-right: 8px;
-  width: 24px;
-  height: 24px;
-}
 
 .main-container {
   align-items: center;
