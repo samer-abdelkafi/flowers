@@ -14,13 +14,13 @@ public class AwsS3Service {
 
     public static final String RAW = "raw";
 
-    private final String s3BucketName;
+    private final String s3BucketName= "";
 
 
-    public AwsS3Service(@Value("${s3.bucket.name}") String s3BucketName) {
-        this.s3BucketName = s3BucketName;
-
-    }
+//    public AwsS3Service(/*@Value("${s3.bucket.name}")*/ String s3BucketName) {
+//        this.s3BucketName = s3BucketName;
+//
+//    }
 
     @SneakyThrows
     public String upload(String fileName, final InputStream inputStream, final String folderTypeMessage) {

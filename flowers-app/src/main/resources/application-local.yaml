@@ -1,0 +1,65 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+    loadbalancer:
+      ribbon:
+        enabled: false
+      retry:
+        enabled: false
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/master.xml
+
+  datasource:
+    url: jdbc:h2:./target/batchtestdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+management:
+  health:
+    jms:
+      enabled: false
+
+logging:
+  level:
+    org:
+      hibernate: info
+      hibernate_SQL: info
+      hibernate_type: info
+      springframework:
+        data: info
+        security: info
+        boot: trace
+        core: debug
+    com:
+      springit: debug
+
+flow:
+  jms:
+    url: tcp://localhost:61626
+    user: artemis
+    pwd: artemis
+
+
+flowers:
+  servers:
+    - name: localhost1
+      type: AMQ
+      host: tcp://localhost:61626
+      user: artemis
+      password: artemis
+    - name: localhost2
+      type: AMQ
+      host: tcp://localhost:61627
+      user: artemis
+      password: artemis

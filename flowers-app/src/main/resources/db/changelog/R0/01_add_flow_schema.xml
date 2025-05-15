@@ -36,7 +36,7 @@
                              primaryKeyName="PK_FLOW_DESTINATION_FILE"/>
             </column>
             <column name="DIRECTORY" type="VARCHAR(255)"/>
-            <column name="CONFIG_NAME" type="VARCHAR(25)"/>
+            <column name="SERVER_NAME" type="VARCHAR(25)"/>
         </createTable>
 
         <addForeignKeyConstraint baseTableName="F_FLOW_DESTINATION_FILE"
@@ -51,7 +51,7 @@
                              primaryKeyName="PK_FLOW_DESTINATION_JMS"/>
             </column>
             <column name="QUEUE_NAME" type="VARCHAR(255)"/>
-            <column name="CONFIG_NAME" type="VARCHAR(25)"/>
+            <column name="SERVER_NAME" type="VARCHAR(25)"/>
         </createTable>
 
         <addForeignKeyConstraint baseTableName="F_FLOW_DESTINATION_JMS"

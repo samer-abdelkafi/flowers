@@ -28,8 +28,8 @@ public class JmsDestination extends Destination  implements Serializable {
     @Column(name = "QUEUE_NAME")
     private String queueName;
 
-    @Column(name = "CONFIG_NAME")
-    private String configName;
+    @Column(name = "SERVER_NAME")
+    private String serverName;
 
     private transient boolean listening;
 

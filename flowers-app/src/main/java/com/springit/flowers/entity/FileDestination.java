@@ -28,7 +28,7 @@ public class FileDestination extends Destination implements Serializable {
     @Column(name = "DIRECTORY")
     private String directory;
 
-    @Column(name = "CONFIG_NAME")
-    private String configName;
+    @Column(name = "SERVER_NAME")
+    private String serverName;
 
 }

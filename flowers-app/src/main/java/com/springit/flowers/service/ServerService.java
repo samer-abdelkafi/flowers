@@ -1,28 +1,37 @@
 package com.springit.flowers.service;
 
-import lombok.AllArgsConstructor;
-import org.springframework.core.env.Environment;
+import com.springit.flowers.config.FlowersProperties;
+import com.springit.flowers.exception.NotFoundException;
+import com.springit.flowers.model.Server;
+import com.springit.flowers.model.ServerBuilder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ServerService {
 
-    private Environment environment;
+    private final FlowersProperties flowersProperties;
 
+    private Set<Server> servers;
 
-    public Set<String> getAllServers() {
-
-        // Assuming that the property name where servers are listed is "server.list"
-        String servers = environment.getRequiredProperty("jms.servers.list");
-
-        // Split the property to get individual server names and collect them into a Set
-        return new HashSet<>(Arrays.asList(servers.split(";")));
+    public Server getServer(String name) {
+        return getServers().stream()
+                .filter(s -> name.equals(s.getName()))
+                .findAny()
+                .orElseThrow(() -> new NotFoundException(name + " server not configured!!!"));
     }
 
+    public Set<Server> getServers() {
+        if(servers == null) {
+            servers = flowersProperties.getServers().stream()
+                    .map(ServerBuilder::build)
+                    .collect(Collectors.toSet());
+        }
+        return servers;
+    }
 
 }

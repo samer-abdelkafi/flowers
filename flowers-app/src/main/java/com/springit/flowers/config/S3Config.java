@@ -12,7 +12,7 @@ import software.amazon.awssdk.services.s3.S3ClientBuilder;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-@Configuration
+//@Configuration
 public class S3Config {
 
     @Bean

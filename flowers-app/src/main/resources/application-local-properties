@@ -64,10 +64,3 @@ logging.level.com.springit=debug
 logging.level.org.hibernate.SQL=info
 logging.level.org.hibernate.type=info
 
-
-# S3
-s3.bucket.name=sbi
-aws.region=sbi
-aws.endpoint=http://localhost:9090
-aws.accessKeyId=s3
-aws.secretAccessKey=s3

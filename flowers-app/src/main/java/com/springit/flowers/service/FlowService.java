@@ -166,7 +166,7 @@ public class FlowService {
                 .filter(new SubscriberMessageFilter(subscriber.getDestination().getId())) // Apply the subscriber's condition
                 .enrichHeaders(headerEnricherSpec -> headerEnricherSpec
                         .header(DESTINATION_ID, subscriber.getDestination().getId())
-                        .header("SUBSCRIBER_SERVER", ((JmsDestination) subscriber.getDestination()).getConfigName())
+                        .header("SUBSCRIBER_SERVER", ((JmsDestination) subscriber.getDestination()).getServerName())
                 )
                 .handle((payload, headers) -> auditService.audit(payload, headers, PENDING))
                 .channel(subscriber.getDestination().getId() + "_channelFilterHandler")
@@ -186,7 +186,7 @@ public class FlowService {
     private static String getQueueName(Destination destination) {
         return Optional.of(destination).map(JmsDestination.class::cast)
                 .map(JmsDestination::getQueueName)
-                .orElseThrow(() -> new RuntimeException("Error to get publisher Queue!!!"));
+                .orElseThrow(() -> new RuntimeException("Error to get publisher Queue of destination id " + destination.getId() + " !!!"));
     }
 
     private static String getSubscriberDestination(FlowSubscriber subscriber) {

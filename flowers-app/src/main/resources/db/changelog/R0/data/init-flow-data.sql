@@ -5,19 +5,20 @@ VALUES
 
 INSERT INTO F_DESTINATION (ID, TYPE, DESCRIPTION)
 VALUES
-(10000, 'JMS', 'File Transfer Protocol server'),
-(10001, 'JMS', 'Java Messaging Service queue');
+(10000, 'JMS', 'Java Messaging Service queue1'),
+(10001, 'JMS', 'Java Messaging Service queue2');
 
 
-INSERT INTO F_FLOW_DESTINATION_FILE (ID, DIRECTORY, CONFIG_NAME)
+--INSERT INTO F_FLOW_DESTINATION_FILE (ID, DIRECTORY, SERVER_NAME)
+--VALUES
+--    (10000, '/files/data', 'Config1');
+
+
+
+INSERT INTO F_FLOW_DESTINATION_JMS (ID, QUEUE_NAME, SERVER_NAME)
 VALUES
-    (10000, '/files/data', 'Config1');
-
-
-
-INSERT INTO F_FLOW_DESTINATION_JMS (ID, QUEUE_NAME, CONFIG_NAME)
-VALUES
-    (10001, 'Queue1', 'JMS_Config1');
+    (10000, 'Queue1', 'localhost1'),
+    (10001, 'Queue2', 'localhost2');
 
 
 INSERT INTO F_FLOW_PUBLISHER (FLOW_ID, DEST_ID)
