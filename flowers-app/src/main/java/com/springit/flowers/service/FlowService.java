@@ -22,6 +22,7 @@ import org.springframework.integration.jms.dsl.Jms;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHandlingException;
 import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.retry.support.RetryTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -63,9 +64,8 @@ public class FlowService {
     }
 
 
-
     public void errorHandlingFlow() {
-        IntegrationFlow flow =  IntegrationFlow.from("flowsErrorChannel")
+        IntegrationFlow flow = IntegrationFlow.from("flowsErrorChannel")
                 .handle((payload, headers) -> {
                     MessageHandlingException messageHandlingException = (MessageHandlingException) payload;
                     Message<?> failedMessage = messageHandlingException.getFailedMessage();
@@ -180,7 +180,6 @@ public class FlowService {
                 })// Handle message to JMS destination
         );  // End the flow for each subscriber here
     }
-
 
 
     private static String getQueueName(Destination destination) {

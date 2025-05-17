@@ -55,11 +55,11 @@ flowers:
   servers:
     - name: localhost1
       type: AMQ
-      host: tcp://localhost:61626
+      host: tcp://localhost:61616
       user: artemis
       password: artemis
     - name: localhost2
       type: AMQ
-      host: tcp://localhost:61627
+      host: tcp://localhost:61616
       user: artemis
       password: artemis

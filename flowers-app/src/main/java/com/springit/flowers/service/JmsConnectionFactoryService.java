@@ -7,22 +7,16 @@ import com.springit.flowers.entity.JmsDestination;
 import com.springit.flowers.model.AmqServer;
 import com.springit.flowers.model.MQServer;
 import com.springit.flowers.model.Server;
-import com.springit.flowers.model.ServerBuilder;
+import jakarta.jms.ConnectionFactory;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.core.env.Environment;
-
 import org.springframework.stereotype.Service;
 
-import jakarta.jms.ConnectionFactory;
 import java.util.List;
 import java.util.Optional;
-
-import static com.springit.flowers.model.Server.ServerType.AMQ;
 
 
 @Slf4j

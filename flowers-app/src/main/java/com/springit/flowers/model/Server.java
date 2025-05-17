@@ -15,10 +15,8 @@ public abstract class Server {
     private String password;
 
 
-    public static enum ServerType {
-        AMQ,
-        KAFKA,
-        MQ;
+    public enum ServerType {
+        AMQ, KAFKA, MQ
     }
 
     @Override

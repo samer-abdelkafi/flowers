@@ -30,6 +30,6 @@ public class ServerBuilder {
     
         public String toString() {
             String var10000 = this.name;
-            return "Server.ServerBuilder(name=" + var10000 + ", type=" + String.valueOf(this.type) + ", host=" + this.host + ", user=" + this.user + ", password=" + this.password + ")";
+            return "Server.ServerBuilder(name=" + var10000 + ", type=" + this.type + ", host=" + this.host + ", user=" + this.user + ", password=" + this.password + ")";
         }
     }

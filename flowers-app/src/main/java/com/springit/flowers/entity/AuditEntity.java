@@ -51,7 +51,7 @@ public class AuditEntity implements Serializable {
 
     @Data
     @Embeddable
-    public class AuditEntityId implements java.io.Serializable {
+    public static class AuditEntityId implements java.io.Serializable {
 
         private static final long serialVersionUID = -4473910954917245489L;
 
